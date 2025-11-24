@@ -15,7 +15,7 @@ export default function Home() {
           absolute -z-10 opacity-80
 
           /* MOBILE */
-          w-[100px] right-1 top-0.5
+          w-[100px] right-3 top-10
 
           /* DESKTOP */
           sm:left-2 sm:top-2 sm:w-28 sm:opacity-100
