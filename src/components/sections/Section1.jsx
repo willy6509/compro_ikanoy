@@ -74,7 +74,7 @@ export default function Section1() {
         {/* 1. Gambar untuk MOBILE (wave-mobile.png) */}
         {/* Ditambahkan class 'md:hidden' agar hilang di layar besar */}
         <img
-          src="/images/wave_mobile.png" // Pastikan nama file sesuai
+          src="/images/wave-mobile.png" // Pastikan nama file sesuai
           alt="wave background mobile"
           className="wave-layer md:hidden absolute bottom-0 left-[-5%] w-[110%] max-w-none h-auto object-cover opacity-80"
         />
