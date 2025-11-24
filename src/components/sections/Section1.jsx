@@ -12,8 +12,7 @@ export default function Section1() {
   useGSAP(() => {
     const tl = gsap.timeline();
 
-    // 1. Animasi Wave (Background Loop terus menerus)
-    // GSAP akan menggerakkan SEMUA elemen dengan class .wave-layer
+    // 1. Animasi Wave
     gsap.to(".wave-layer", {
       xPercent: -2,
       duration: 3,
@@ -22,7 +21,7 @@ export default function Section1() {
       ease: "sine.inOut"
     });
 
-    // 2. Animasi Masuk (Intro saat pertama kali load)
+    // 2. Animasi Masuk
     tl.from(".hero-text", {
       y: 50,
       opacity: 0,
@@ -38,7 +37,7 @@ export default function Section1() {
       ease: "elastic.out(1, 0.5)"
     }, "-=0.5");
 
-    // 3. Animasi Scroll (Parallax Effect)
+    // 3. Animasi Scroll
     gsap.to(".hero-content", {
       scrollTrigger: {
         trigger: "#home",
@@ -63,46 +62,45 @@ export default function Section1() {
 
   return (
     <section ref={heroRef} id="home" className="relative flex min-h-screen w-full items-center justify-center pt-20 overflow-hidden">
-
-      {/* Background Blobs */}
+      
+      {/* Background Blobs - Kita biarkan div biasa */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/30 rounded-full blur-3xl -z-20 animate-pulse" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-yellow-200/30 rounded-full blur-3xl -z-20" />
 
-      {/* === Wave Background (DIPERBARUI UNTUK RESPONSIVE) === */}
+      {/* === Wave Background === */}
       <div className="absolute inset-0 flex items-end justify-center pointer-events-none -z-10 w-full h-full">
-
-        {/* 1. Gambar untuk MOBILE (wave-mobile.png) */}
-        {/* Ditambahkan class 'md:hidden' agar hilang di layar besar */}
+        
+        {/* GAMBAR MOBILE */}
+        {/* PERBAIKAN: Ditambahkan fetchPriority="high" dan loading="eager" */}
         <img
-          src="/images/wave-mobile.png" // Pastikan nama file sesuai
+          src="/images/wave-mobile.png"
           alt="wave background mobile"
-          className="wave-layer md:hidden absolute bottom-0 left-[-5%] w-[110%] max-w-none h-auto object-cover opacity-80"
+          fetchPriority="high"  // <--- INI KUNCINYA (Saran Google)
+          loading="eager"       // <--- Memaksa load langsung (jangan lazy)
+          className="wave-layer md:hidden absolute bottom-0 left-[-5%] w-[110%] max-w-none h-auto object-cover opacity-80" 
         />
 
-        {/* 2. Gambar untuk DESKTOP/TABLET (wave.png - yang lama) */}
-        {/* Ditambahkan class 'hidden md:block' agar hanya muncul di layar besar */}
+        {/* GAMBAR DESKTOP */}
         <img
           src="/images/wave.png"
           alt="wave background desktop"
-          className="wave-layer hidden md:block absolute bottom-0 left-[-5%] w-[110%] max-w-none h-auto object-cover opacity-80"
+          fetchPriority="high"  // Desktop juga perlu cepat
+          loading="eager"
+          className="wave-layer hidden md:block absolute bottom-0 left-[-5%] w-[110%] max-w-none h-auto object-cover opacity-80" 
         />
-
       </div>
 
       {/* === KONTEN UTAMA === */}
       <div className="hero-content relative z-10 flex flex-col items-center px-4 text-center max-w-4xl mx-auto">
-        {/* Judul Besar */}
         <h1 className="hero-text text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight drop-shadow-lg">
           IKAN<span className="text-cyan-300 inline-block filter drop-shadow-md">OY</span>
         </h1>
 
-        {/* Deskripsi */}
         <p className="hero-text mt-6 max-w-2xl text-base md:text-lg text-blue-50 leading-relaxed font-medium drop-shadow-md">
-          Menyediakan <span className="font-bold text-white border-b border-cyan-300/50">ikan kering premium</span> —
+          Menyediakan <span className="font-bold text-white border-b border-cyan-300/50">ikan kering premium</span> — 
           segar, gurih, dan higienis. Solusi praktis protein harian keluarga Anda.
         </p>
 
-        {/* Tombol */}
         <div className="hero-btn mt-10">
           <a
             href="#product"
