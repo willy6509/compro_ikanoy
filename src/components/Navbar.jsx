@@ -78,7 +78,9 @@ export default function Navbar() {
             </a>
 
             <div className="rounded-full p-2 transition hover:scale-110 hover:bg-gray-400/30">
+            <a href="https://www.tiktok.com/@ikano.y?is_from_webapp=1&sender_device=pc">
               <Image src="/images/tiktok.svg" width={28} height={28} alt="tiktok logo" />
+              </a>
             </div>
           </div>
         </div>

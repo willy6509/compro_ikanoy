@@ -97,7 +97,9 @@ export default function Section3() {
             <a href="https://www.instagram.com/ikano.y?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
               <SocialIcon src="/images/instagram.svg" alt="Instagram" tooltip="@ikanoy.id" />
             </a>
+            <a href="https://www.tiktok.com/@ikano.y?is_from_webapp=1&sender_device=pc">
             <SocialIcon src="/images/tiktok.svg" alt="TikTok" tooltip="@ikanoy.official" />
+            </a>
           </div>
         </div>
       </div>
