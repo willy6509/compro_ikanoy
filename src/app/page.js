@@ -1,90 +1,72 @@
-import { Footer, Section1, Section2, Section3 } from '@/components/ui'
+"use client"
+import { useRef } from 'react'
 import Image from 'next/image'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Footer, Section1, Section2, Section3 } from '@/components/ui'
+
+gsap.registerPlugin(ScrollTrigger)
 
 export default function Home() {
+  const containerRef = useRef(null)
+
+  useGSAP(() => {
+    // PARALLAX EFFECT: Ikan bergerak perlahan saat scroll
+    const fishes = gsap.utils.toArray('.fish-item')
+    fishes.forEach((fish) => {
+      const speed = fish.getAttribute('data-speed') || 0.1
+      
+      gsap.to(fish, {
+        y: (i, target) => -ScrollTrigger.maxScroll(window) * speed,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 0,
+        },
+      })
+    })
+  }, { scope: containerRef })
+
   return (
-    <main className="relative overflow-hidden">
+    <main ref={containerRef} className="relative w-full overflow-hidden bg-[#f8f9fa]">
+      
+      {/* === DEKORASI IKAN === 
+          Hanya menyisakan ikan di bagian tengah (About & Product)
+          agar Hero dan Footer lebih bersih.
+      */}
 
-      {/* === fish 4 === */}
-      <Image
-        src="/images/fish4.png"
-        alt="Description"
-        width={300}
-        height={300}
-        className="
-          absolute -z-10 opacity-80
+      {/* 1. SECTION ABOUT (Kiri Tengah) */}
+      {/* top-[110vh] = Muncul setelah scroll melewati layar pertama */}
+      <div 
+        data-speed="0.08" 
+        className="fish-item absolute pointer-events-none z-30 opacity-60
+        top-[110vh] -left-10 w-[140px]
+        sm:left-0 sm:w-56"
+      >
+        <Image src="/images/fish1.png" alt="decor" width={300} height={300} className="object-contain" />
+      </div>
 
-          /* MOBILE */
-          w-[100px] right-3 top-10
+      {/* 2. SECTION PRODUCT (Kanan Bawah) */}
+      {/* top-[210vh] = Muncul di area produk */}
+      <div 
+        data-speed="0.1" 
+        className="fish-item absolute pointer-events-none z-30 rotate-180 opacity-50
+        top-[210vh] -right-8 w-[100px]
+        sm:right-0 sm:w-40"
+      >
+        <Image src="/images/fish7.png" alt="decor" width={300} height={300} className="object-contain" />
+      </div>
 
-          /* DESKTOP */
-          sm:left-2 sm:top-2 sm:w-28 sm:opacity-100
-          md:w-40 
-          lg:w-52
-        "
-      />
+      {/* === CONTENT SECTIONS === */}
+      <div className="relative z-10">
+        <Section1 />
+        <Section2 />
+        <Section3 />
+      </div>
 
-      <Section1 />
-
-      {/* === fish 7 (DISABLED ON MOBILE) === */}
-      <Image
-        src="/images/fish7.png"
-        alt="Description"
-        width={300}
-        height={300}
-        className="
-          absolute -z-10 rotate-90
-          
-          hidden /* MOBILE: hidden */
-          sm:block /* TABLET+ aktif */
-
-          sm:right-0 sm:top-1/3 sm:w-28
-          md:top-1/2 md:w-40
-          lg:w-52
-        "
-      />
-
-      {/* === fish 1 === */}
-      <Image
-        src="/images/fish1.png"
-        alt="Description"
-        width={300}
-        height={300}
-        className="
-          absolute -z-10 opacity-80
-
-          /* MOBILE: tetap tengah agar tidak terganggu fish7 */
-          left-1/2 top-1/2 -translate-x-1/2 translate-y-10 w-[300px]
-
-          /* DESKTOP */
-          sm:left-0 sm:translate-x-0 sm:w-28 sm:opacity-100 sm:translate-y-20
-          md:w-40 md:translate-y-full
-          lg:w-52
-        "
-      />
-
-      <Section2 />
-
-      {/* === fish 6 === */}
-      <Image
-        src="/images/fish6.png"
-        alt="Description"
-        width={300}
-        height={300}
-        className="
-          absolute -z-10
-
-          /* MOBILE: sedikit diperkecil */
-          w-[200px] left-1/2 bottom-50 -translate-x-1/2 opacity-80
-
-          /* DESKTOP */
-          sm:w-28 sm:right-0 sm:left-auto sm:bottom-0 sm:translate-x-0 sm:opacity-100
-          md:w-40 md:-translate-y-1/2
-          lg:w-52
-        "
-      />
-
-      <Section3 />
       <Footer />
     </main>
   )

@@ -1,24 +1,75 @@
+"use client";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function Section2() {
+  const aboutRef = useRef(null);
+
+  useGSAP(() => {
+    // 1. Header Animasi (Judul)
+    gsap.from(".about-header", {
+      scrollTrigger: {
+        trigger: ".about-header",
+        start: "top 85%", // Mulai saat elemen masuk 85% viewport
+        end: "top 20%",
+        toggleActions: "play reverse play reverse", // BARU: Mainkan animasi bolak-balik
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power2.out"
+    });
+
+    // 2. Konten Kartu (Card) - Efek Scale & Fade
+    gsap.from(".about-content", {
+      scrollTrigger: {
+        trigger: ".about-content",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play reverse play reverse", // BARU: Animasi ulang saat scroll naik
+      },
+      scale: 0.9, // Efek Zoom in
+      y: 100,
+      opacity: 0,
+      duration: 1,
+      ease: "back.out(1.2)" // Efek membal sedikit
+    });
+
+  }, { scope: aboutRef });
+
   return (
-    <section id="about" className="min-h-[70vh]">
-      {/* text about */}
-      <div className="mb-12 flex flex-col gap-2">
-        <p className="text-center text-xl font-semibold">About us</p>
-        <div className="flex items-center justify-center gap-3">
-          <div className="h-1 w-15 border-b-2 border-black" />
-          <div className="h-3 w-3 rotate-45 bg-black" />
-          <div className="h-1 w-15 border-b-2 border-black" />
-        </div>
+    <section ref={aboutRef} id="about" className="relative py-24 min-h-[60vh] flex flex-col items-center justify-center">
+      
+      {/* Title Decoration */}
+      <div className="about-header mb-16 flex flex-col items-center gap-4">
+        <span className="rounded-full bg-blue-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-blue-600">
+          Our Story
+        </span>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Tentang Kami</h2>
+        <div className="h-1 w-20 rounded-full bg-blue-500"></div>
       </div>
 
-      {/* biografi singkat */}
-      <div className="flex justify-center">
-        <div className="flex w-1/2 flex-col items-center justify-center text-center">
-          <p className="text-xl font-semibold text-[#00b4d8]">IKANOY</p>
-          <p className="mb-3 text-2xl font-bold capitalize">Gurihnya Laut Indonesia, Sekarang Hadir di Setiap Gigitan.</p>
-          <p className="italic">
-            Ikanoy menghadirkan ikan kering bergizi dan praktis untuk gaya hidup modern.
-Kami mengolah ikan segar lokal dengan teknik higienis dan kemasan inovatif, menjadikannya sumber protein tahan lama yang lezat dan terjangkau bagi semua kalangan.
+      {/* Main Content */}
+      <div className="about-content w-full max-w-4xl px-6 text-center">
+        <div className="relative rounded-3xl bg-white p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100">
+          {/* Quote Icon */}
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 p-4 text-white shadow-lg">
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 8.44772 14.017 9V11C14.017 11.5523 13.5693 12 13.017 12H12.017V5H22.017V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 8.44772 5.0166 9V11C5.0166 11.5523 4.56889 12 4.0166 12H3.0166V5H13.0166V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" /></svg>
+          </div>
+
+          <h3 className="mt-4 text-2xl font-bold text-gray-900 md:text-3xl">
+            Gurihnya Laut Indonesia, <br/>
+            <span className="text-blue-500">Kini di Meja Makan Anda.</span>
+          </h3>
+          
+          <p className="mt-6 text-lg leading-relaxed text-gray-600">
+            "Ikanoy menghadirkan ikan kering bergizi dan praktis untuk gaya hidup modern. 
+            Kami mengolah ikan segar lokal dengan teknik higienis dan kemasan inovatif, 
+            menjadikannya sumber protein tahan lama yang lezat dan terjangkau."
           </p>
         </div>
       </div>
