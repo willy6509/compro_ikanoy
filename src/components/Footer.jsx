@@ -4,7 +4,7 @@ export default function Footer() {
       <p className="text-sm text-black/70">
         © {new Date().getFullYear()} Ikanoy. All Rights Reserved.
       </p>
-      <p className="text-black/70">
+      <p className="text-black/70 text-center">
         Crafted with care in Semarang using Next.js & Tailwind CSS
       </p>
 

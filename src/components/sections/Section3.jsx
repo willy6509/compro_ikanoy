@@ -46,7 +46,7 @@ export default function Section3() {
 
                   {/* Tombol Beli Sekarang */}
                   <a
-                    href={`https://wa.me/6281234567890?text=Halo%20saya%20ingin%20membeli%20produk%20Ikanoy:%20${encodeURIComponent(product.name)}`}
+                    href={`https://wa.me/628995873658?text=Halo%20saya%20ingin%20membeli%20produk%20Ikanoy:%20${encodeURIComponent(product.name)}`}
                     target="_blank"
                     className="block w-full rounded-md bg-blue-600 py-2 text-center text-sm font-semibold text-white hover:bg-blue-700 transition"
                   >
