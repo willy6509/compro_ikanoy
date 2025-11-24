@@ -16,47 +16,46 @@ export default function Section3() {
             Dari ikan kering mentah hingga varian matang siap saji — kami hadirkan cita rasa laut Nusantara dengan rasa gurih, renyah, dan inovatif.
           </p>
 
-          {/* Grid produk */}<div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-  {[
-    { name: 'Ikan Kering Mentah Asin', img: '/images/ikan-asin.png' },
-    { name: 'Ikan Kering Mentah Manis', img: '/images/ikan-manis.png' },
-    { name: 'Ikan Kering Balado', img: '/images/ikan-balado.png' },
-    { name: 'Ikan Kering BBQ', img: '/images/ikan-bbq.png' },
-    { name: 'Ikan Kering Original', img: '/images/ikan-original.png' },
-    // { name: 'Ikan Kering Pedas Manis', img: '/images/ikan-pedas-manis.png' },
-  ].map((product, index) => (
-    // --- MULAI KARTU PRODUK (DIGANTI) ---
-    <div
-      key={index}
-      className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:shadow-lg"
-    >
-      {/* Gambar Produk:
-        - Kita gunakan prop width/height untuk menentukan rasio aspek (1:1).
-        - Kita gunakan className "w-full h-auto" agar gambar mengisi lebar kartu.
-      */}
-      <Image
-        src={product.img}
-        alt={product.name}
-        width={400}  // Prop untuk rasio (misal: 400x400)
-        height={400} // Prop untuk rasio (misal: 400x400)
-        className="w-full h-auto object-cover" // Styling agar responsif
-      />
+          {/* Grid produk */}
+          <div className="grid w-full grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {[
+              { name: 'Ikan Kering Mentah Asin', img: '/images/ikan-asin.png' },
+              { name: 'Ikan Kering Mentah Manis', img: '/images/ikan-manis.png' },
+              { name: 'Ikan Kering Balado', img: '/images/ikan-balado.png' },
+              { name: 'Ikan Kering BBQ', img: '/images/ikan-bbq.png' },
+              { name: 'Ikan Kering Original', img: '/images/ikan-original.png' },
+            ].map((product, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all hover:shadow-lg"
+              >
+                {/* Gambar Produk */}
+                <Image
+                  src={product.img}
+                  alt={product.name}
+                  width={400}
+                  height={400}
+                  className="w-full h-auto object-cover"
+                />
 
-      {/* Bagian Detail Produk */}
-      <div className="p-3">
-        {/* Nama Produk:
-          - line-clamp-2 membatasi teks jadi 2 baris.
-          - h-12 (tinggi 3rem) memastikan semua kartu punya tinggi teks yang sama,
-            bahkan jika nama produknya pendek (hanya 1 baris).
-        */}
-        <h3 className="text-base font-semibold text-gray-800 line-clamp-2 h-12">
-          {product.name}
-        </h3>
-      </div>
-    </div>
-    // --- AKHIR KARTU PRODUK ---
-  ))}
-</div>
+                {/* Detail Produk + Tombol */}
+                <div className="p-3 flex flex-col gap-3">
+                  <h3 className="text-base font-semibold text-gray-800 line-clamp-2 h-12">
+                    {product.name}
+                  </h3>
+
+                  {/* Tombol Beli Sekarang */}
+                  <a
+                    href={`https://wa.me/6281234567890?text=Halo%20saya%20ingin%20membeli%20produk%20Ikanoy:%20${encodeURIComponent(product.name)}`}
+                    target="_blank"
+                    className="block w-full rounded-md bg-blue-600 py-2 text-center text-sm font-semibold text-white hover:bg-blue-700 transition"
+                  >
+                    Beli Sekarang
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* ===== BAGIAN REVIEW ===== */}
@@ -95,7 +94,9 @@ export default function Section3() {
 
           {/* Social Icons */}
           <div className="flex justify-center gap-3 pt-4">
-            <SocialIcon src="/images/instagram.svg" alt="Instagram" tooltip="@ikanoy.id" />
+            <a href="https://www.instagram.com/ikano.y?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
+              <SocialIcon src="/images/instagram.svg" alt="Instagram" tooltip="@ikanoy.id" />
+            </a>
             <SocialIcon src="/images/tiktok.svg" alt="TikTok" tooltip="@ikanoy.official" />
           </div>
         </div>
