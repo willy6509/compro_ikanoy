@@ -12,11 +12,16 @@ export default function Home() {
   const containerRef = useRef(null)
 
   useGSAP(() => {
-    // PARALLAX EFFECT: Ikan bergerak perlahan saat scroll
+    // 1. FIX REFRESH
+    window.scrollTo(0, 0);
+    if (window.history.scrollRestoration) {
+      window.history.scrollRestoration = 'manual';
+    }
+    
+    // 2. PARALLAX EFFECT IKAN
     const fishes = gsap.utils.toArray('.fish-item')
     fishes.forEach((fish) => {
       const speed = fish.getAttribute('data-speed') || 0.1
-      
       gsap.to(fish, {
         y: (i, target) => -ScrollTrigger.maxScroll(window) * speed,
         ease: 'none',
@@ -33,29 +38,31 @@ export default function Home() {
   return (
     <main ref={containerRef} className="relative w-full overflow-hidden bg-[#f8f9fa]">
       
-      {/* === DEKORASI IKAN === 
-          Hanya menyisakan ikan di bagian tengah (About & Product)
-          agar Hero dan Footer lebih bersih.
+      {/* === DEKORASI IKAN RESPONSIF === 
+          Mobile: Ukuran kecil (w-24), posisi top disesuaikan karena section lebih panjang.
+          Desktop (md/lg): Ukuran normal, posisi standar.
       */}
 
-      {/* 1. SECTION ABOUT (Kiri Tengah) */}
-      {/* top-[110vh] = Muncul setelah scroll melewati layar pertama */}
+      {/* 1. SECTION ABOUT (Kiri) */}
       <div 
         data-speed="0.08" 
         className="fish-item absolute pointer-events-none z-30 opacity-60
-        top-[110vh] -left-10 w-[140px]
-        sm:left-0 sm:w-56"
+        /* MOBILE */
+        top-[120vh] -left-6 w-24
+        /* DESKTOP */
+        md:top-[110vh] md:left-0 md:w-56"
       >
         <Image src="/images/fish1.png" alt="decor" width={300} height={300} className="object-contain" />
       </div>
 
-      {/* 2. SECTION PRODUCT (Kanan Bawah) */}
-      {/* top-[210vh] = Muncul di area produk */}
+      {/* 2. SECTION PRODUCT (Kanan) */}
       <div 
         data-speed="0.1" 
         className="fish-item absolute pointer-events-none z-30 rotate-180 opacity-50
-        top-[210vh] -right-8 w-[100px]
-        sm:right-0 sm:w-40"
+        /* MOBILE: Posisi lebih jauh ke bawah (230vh) karena konten numpuk */
+        top-[230vh] -right-4 w-20
+        /* DESKTOP */
+        md:top-[210vh] md:-right-8 md:w-40"
       >
         <Image src="/images/fish7.png" alt="decor" width={300} height={300} className="object-contain" />
       </div>
