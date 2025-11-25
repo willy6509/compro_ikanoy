@@ -10,14 +10,17 @@ export default function Navbar() {
 
   // Animasi Navbar Turun saat Load
   useGSAP(() => {
+  // ✅ Pengecekan stabilitas: Pastikan navRef.current ada
+  if (navRef.current) {
     gsap.from(navRef.current, {
       y: -100,
       opacity: 0,
       duration: 1,
       ease: "power4.out",
       delay: 0.2
-    })
-  }, [])
+    });
+  }
+}, [navRef.current]);
 
   return (
     <nav ref={navRef} className="font-poppins fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md shadow-sm transition-all border-b border-white/20">
