@@ -18,6 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:title" content="IKANOY" />
+        <meta property="og:description" content="Company profile website." />
+        <meta property="og:image" content="https://ikanoy.vercel.app/preview.jpg" />
+        <meta property="og:url" content="https://ikanoy.vercel.app" />
+        <meta property="og:type" content="website" />
+      </head>
       <body className={`${poppins.variable} antialiased`}>
         {/* Terapkan variable font + smoothing */}
         <Navbar /> {/* Navbar tampil di semua halaman */}
