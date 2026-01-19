@@ -9,10 +9,10 @@ import { SocialIcon } from "../ui";
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { name: 'Ikan Kering Asin', img: '/images/ikan-asin.png', tag: 'Best Seller' },
-  { name: 'Ikan Kering Manis', img: '/images/ikan-manis.png', tag: 'Baru' },
-  { name: 'Ikan Kering Balado', img: '/images/ikan-balado.png', tag: 'Favorit' },
-  { name: 'Ikan Kering Extra Pedas', img: '/images/ikan-ekstrapedas.png', tag: 'Pedas' },
+  { name: 'Ikan Kering Asin', img: '/images/ikan-asin.png', tag: 'Best Seller', price:'13.000' },
+  { name: 'Ikan Kering Manis', img: '/images/ikan-manis.png', tag: 'Baru', price:'13.000' },
+  { name: 'Ikan Kering Balado', img: '/images/ikan-balado.png', tag: 'Favorit', price:'13.000' },
+  { name: 'Ikan Kering Extra Pedas', img: '/images/ikan-ekstrapedas.png', tag: 'Pedas', price:'13.000' },
 ];
 
 export default function Section3() {
@@ -92,6 +92,9 @@ export default function Section3() {
 
               {/* Info */}
               <div className="flex flex-1 flex-col p-3 sm:p-4">
+                <h4 className="text-sm font-bold text-gray-800 line-clamp-2 h-10 leading-tight">
+                  {product.price}
+                </h4>
                 <h3 className="mb-3 text-sm font-bold text-gray-800 line-clamp-2 h-10 leading-tight">
                   {product.name}
                 </h3>
@@ -129,10 +132,10 @@ export default function Section3() {
           </div>
 
           <div className="flex gap-4">
-            <a href="https://instagram.com" target="_blank">
+            <a href="https://www.instagram.com/ikano.y?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
                <SocialIcon src="/images/instagram.svg" alt="IG" tooltip="@ikanoy.id" />
             </a>
-            <a href="https://tiktok.com" target="_blank">
+            <a href="https://www.tiktok.com/@ikano.y?is_from_webapp=1&sender_device=pc" target="_blank">
                <SocialIcon src="/images/tiktok.svg" alt="TT" tooltip="@ikanoy.official" />
             </a>
           </div>
