@@ -1,6 +1,7 @@
 import { Poppins } from 'next/font/google' // Memuat font Google Poppins secara teroptimasi (Next.js)
 import './globals.css' // Gaya global proyek
 import Navbar from '@/components/Navbar' // Navbar global di semua halaman
+import { Analytics } from "@vercel/analytics/next"
 
 // Inisialisasi font Poppins dan expose sebagai CSS variable agar mudah dipakai di seluruh app
 const poppins = Poppins({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
         {/* Terapkan variable font + smoothing */}
         <Navbar /> {/* Navbar tampil di semua halaman */}
         <main className="fontpop">{children}</main> {/* Area konten halaman */}
+        <Analytics />
       </body>
     </html>
   )
