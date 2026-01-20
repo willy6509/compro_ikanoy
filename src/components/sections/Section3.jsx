@@ -70,7 +70,7 @@ export default function Section3() {
         </div>
 
         {/* ===== GRID PRODUK ===== */}
-        <div className="product-grid grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-5 mb-32">
+        <div className="product-grid grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4 mb-32">
           {products.map((product, index) => (
             <div
               key={index}
