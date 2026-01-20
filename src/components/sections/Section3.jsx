@@ -9,10 +9,10 @@ import { SocialIcon } from "../ui";
 gsap.registerPlugin(ScrollTrigger);
 
 const products = [
-  { name: 'Ikan Kering Asin', img: '/images/ikan-asin.png', tag: 'Best Seller', price:'13.000' },
-  { name: 'Ikan Kering Manis', img: '/images/ikan-manis.png', tag: 'Baru', price:'13.000' },
-  { name: 'Ikan Kering Balado', img: '/images/ikan-balado.png', tag: 'Favorit', price:'13.000' },
-  { name: 'Ikan Kering Extra Pedas', img: '/images/ikan-ekstrapedas.png', tag: 'Pedas', price:'13.000' },
+  { name: 'Ikan Kering Asin', img: '/images/ikan-asin.png', tag: 'Best Seller', price:'12.000' },
+  { name: 'Ikan Kering Manis', img: '/images/ikan-manis.png', tag: 'Baru', price:'12.000' },
+  { name: 'Ikan Kering Balado', img: '/images/ikan-balado.png', tag: 'Favorit', price:'12.000' },
+  { name: 'Ikan Kering Extra Pedas', img: '/images/ikan-ekstrapedas.png', tag: 'Pedas', price:'12.000' },
 ];
 
 export default function Section3() {
