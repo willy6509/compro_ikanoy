@@ -100,7 +100,7 @@ export default function Section3() {
                 </h3>
                 
                 <a
-                  href={`https://wa.me/628995873658?text=Halo%20Ikanoy,%20saya%20mau%20pesan:%20${encodeURIComponent(product.name)}`}
+                  href={`https://wa.me/6281256756962?text=Halo%20Ikanoy,%20saya%20mau%20pesan:%20${encodeURIComponent(product.name)}`}
                   target="_blank"
                   className="mt-auto flex w-full items-center justify-center gap-2 rounded-lg bg-blue-600 py-2 text-xs font-bold text-white transition-colors hover:bg-blue-700"
                 >
